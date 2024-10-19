@@ -1,18 +1,14 @@
 function add(numbersString) {
 	if (!numbersString) return 0;
 
-	const numbersArray = numbersString.split(",").map(Number);
-	let sum = 0;
+	const numbersArray = numbersString.split(/[\n,]/).map(Number);
 
-	for (const number of numbersArray) {
-		if (!number) {
-			sum += 0;
-		} else {
-			sum += number;
+	return numbersArray.reduce((acc, curr) => {
+		if (Number.isNaN(curr)) {
+			return acc;
 		}
-	}
-
-	return sum;
+		return acc + curr;
+	}, 0);
 }
 
 module.exports = add;

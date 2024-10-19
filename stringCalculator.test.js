@@ -6,4 +6,10 @@ test("should return 0 for an empty string", () => {
 	expect(add("1,5")).toBe(6);
 	expect(add("1,5,1,0")).toBe(7);
 	expect(add(`7,""`)).toBe(7);
+
+	// multiple line input
+	expect(add("1,5\n1,0")).toBe(7);
+	expect(add("1\n5,1,0")).toBe(7);
+	expect(add("1,5\n1\n0")).toBe(7);
+	expect(add("1,5\n1\n0,9")).toBe(16);
 });
